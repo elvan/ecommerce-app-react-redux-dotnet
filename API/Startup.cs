@@ -1,5 +1,7 @@
+using API.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +27,11 @@ namespace API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
+
+            _ = services.AddDbContext<StoreContext>(options =>
+              {
+                  _ = options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+              });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
