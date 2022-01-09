@@ -8,7 +8,7 @@ namespace API.Data
     {
         public static void Initialize(StoreContext context)
         {
-            if (!context.Products.Any())
+            if (context.Products.Any())
             {
                 return;
             }
