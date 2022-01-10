@@ -39,7 +39,7 @@ export default function ProductCard({ product }: Props) {
         sx={{
           height: '200',
           backgroundSize: 'cover',
-          bgcolor: 'grey.300',
+          bgcolor: 'primary.light',
         }}
       />
       <CardContent>
