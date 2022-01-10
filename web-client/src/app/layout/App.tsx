@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Catalog from '../../features/catalog/Catalog';
 import Product from '../models/product';
 
 function App() {
@@ -9,6 +10,23 @@ function App() {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+
+  function addProduct() {
+    setProducts((prevState) => {
+      return [
+        ...prevState,
+        {
+          id: Math.random() * 1000,
+          name: 'New Product',
+          description:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+          price: 100,
+          pictureUrl: 'https://picsum.photos/200/300',
+          quantityInStock: 99,
+        },
+      ];
+    });
+  }
 
   return (
     <div className='app'>
@@ -23,17 +41,7 @@ function App() {
       >
         This is a sample application for an ecommerce website.
       </p>
-      <ul>
-        {products.map((product: Product) => (
-          <li key={product.id}>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>
-              <strong>Price:</strong> ${product.price}
-            </p>
-          </li>
-        ))}
-      </ul>
+      <Catalog products={products} addProduct={addProduct} />
     </div>
   );
 }
