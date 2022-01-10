@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [products, setProducts] = useState<any>([]);
+  const [products, setProducts] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/api/products')
+    fetch('http://localhost:5000/api/products')
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
