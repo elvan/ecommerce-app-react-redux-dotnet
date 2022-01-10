@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, FormControlLabel, Toolbar, Typography } from '@mui/material';
 
 export default function Header() {
   return (
@@ -6,6 +6,10 @@ export default function Header() {
       <Toolbar>
         <Typography variant='h6'>Ecommerce</Typography>
       </Toolbar>
+      <FormControlLabel
+        control={<MaterialUISwitch sx={{ m: 1 }} />}
+        label='MUI switch'
+      />
     </AppBar>
   );
 }
