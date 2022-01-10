@@ -1,7 +1,8 @@
-import { Typography } from '@mui/material';
+import { Container, CssBaseline } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Catalog from '../../features/catalog/Catalog';
 import Product from '../models/product';
+import Header from './Header';
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -30,19 +31,12 @@ function App() {
   }
 
   return (
-    <div className='app'>
-      <Typography variant='h1'>EcommerceApp</Typography>
-      <p
-        style={{
-          color: '#333',
-          backgroundColor: '#eee',
-          padding: '10px',
-          borderRadius: '5px',
-        }}
-      >
-        This is a sample application for an ecommerce website.
-      </p>
-      <Catalog products={products} addProduct={addProduct} />
+    <div>
+      <CssBaseline />
+      <Header />
+      <Container>
+        <Catalog products={products} addProduct={addProduct} />
+      </Container>
     </div>
   );
 }
