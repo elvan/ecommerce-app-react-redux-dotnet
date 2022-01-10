@@ -1,39 +1,13 @@
-import { useState } from 'react';
-
-const DUMMY_PRODUCTS = [
-  {
-    id: 1,
-    name: 'Product 1',
-    price: 100,
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta cum quibusdam consequatur suscipit! Minus aliquam, molestiae assumenda iste nobis error, ab recusandae ipsa velit repellendus sint esse explicabo. Dolore, saepe.',
-  },
-  {
-    id: 2,
-    name: 'Product 2',
-    price: 200,
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta cum quibusdam consequatur suscipit! Minus aliquam, molestiae assumenda iste nobis error, ab recusandae ipsa velit repellendus sint esse explicabo. Dolore, saepe.',
-  },
-];
+import { useEffect, useState } from 'react';
 
 function App() {
-  const [products, setProducts] = useState(DUMMY_PRODUCTS);
+  const [products, setProducts] = useState<any>([]);
 
-  function addProduct() {
-    setProducts((prevProducts) => {
-      const newId = prevProducts.length + 1;
-      const newProduct = {
-        id: newId,
-        name: 'Product ' + newId,
-        price: 100 * newId,
-        description:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta cum quibusdam consequatur suscipit! Minus aliquam, molestiae assumenda iste nobis error, ab recusandae ipsa velit repellendus sint esse explicabo. Dolore, saepe.',
-      };
-
-      return [...prevProducts, newProduct];
-    });
-  }
+  useEffect(() => {
+    fetch('/api/products')
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, [products]);
 
   return (
     <div className='app'>
@@ -48,9 +22,8 @@ function App() {
       >
         This is a sample application for an ecommerce website.
       </p>
-      <button onClick={addProduct}>Add Product</button>
       <ul>
-        {products.map((product) => (
+        {products.map((product: any) => (
           <li key={product.id}>
             <h2>{product.name}</h2>
             <p>{product.description}</p>
