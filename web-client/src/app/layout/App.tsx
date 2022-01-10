@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Catalog from '../../features/catalog/Catalog';
 import Product from '../models/product';
@@ -30,7 +31,7 @@ function App() {
 
   return (
     <div className='app'>
-      <h1>EcommerceApp</h1>
+      <Typography variant='h1'>EcommerceApp</Typography>
       <p
         style={{
           color: '#333',
