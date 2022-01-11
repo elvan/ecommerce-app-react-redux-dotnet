@@ -5,7 +5,11 @@ import {
   ThemeProvider,
 } from '@mui/material';
 import { useState } from 'react';
+import { Route } from 'react-router';
+import AboutPage from '../../features/about/AboutPage';
 import Catalog from '../../features/catalog/Catalog';
+import ContactPage from '../../features/contact/Contact';
+import HomePage from '../../features/home/HomePage';
 import Header from './Header';
 
 function App() {
@@ -30,7 +34,11 @@ function App() {
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
       <Container>
-        <Catalog />
+        <Route path='/' component={HomePage} exact />
+        <Route path='/catalog' component={Catalog} exact />
+        <Route path='/catalog/:id' component={Catalog} exact />
+        <Route path='/about' component={AboutPage} exact />
+        <Route path='/contact' component={ContactPage} exact />
       </Container>
     </ThemeProvider>
   );
