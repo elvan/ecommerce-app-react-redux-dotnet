@@ -11,9 +11,11 @@ export default function Catalog() {
     setLoading(true);
 
     agent.Catalog.list()
-      .then((products) => setProducts(products))
+      .then((products) => {
+        setProducts(products);
+      })
       .catch((error) => {
-        console.error(error);
+        console.error(error.response);
       })
       .finally(() => {
         setLoading(false);

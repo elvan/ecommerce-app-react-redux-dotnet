@@ -19,7 +19,7 @@ interface Props {
 
 const midLinks = [
   { title: 'Catalog', path: '/catalog' },
-  { title: 'About', path: '/about' },
+  { title: 'Sandbox', path: '/sandbox' },
   { title: 'Contact', path: '/contact' },
 ];
 
