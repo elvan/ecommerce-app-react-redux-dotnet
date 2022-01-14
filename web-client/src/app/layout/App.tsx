@@ -5,7 +5,7 @@ import {
   ThemeProvider,
 } from '@mui/material';
 import { useState } from 'react';
-import { Route } from 'react-router';
+import { Route, Switch } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Catalog from '../../features/catalog/Catalog';
@@ -13,6 +13,7 @@ import ProductDetails from '../../features/catalog/ProductDetails';
 import ContactPage from '../../features/contact/Contact';
 import HomePage from '../../features/home/HomePage';
 import SandboxPage from '../../features/sandbox/SandboxPage';
+import NotFound from '../errors/NotFound';
 import ServerError from '../errors/ServerError';
 import Header from './Header';
 
@@ -39,12 +40,15 @@ function App() {
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
       <Container>
-        <Route path='/' component={HomePage} exact />
-        <Route path='/catalog' component={Catalog} exact />
-        <Route path='/catalog/:id' component={ProductDetails} exact />
-        <Route path='/sandbox' component={SandboxPage} exact />
-        <Route path='/contact' component={ContactPage} exact />
-        <Route path='/server-error' component={ServerError} exact />
+        <Switch>
+          <Route path='/' component={HomePage} exact />
+          <Route path='/catalog' component={Catalog} exact />
+          <Route path='/catalog/:id' component={ProductDetails} />
+          <Route path='/sandbox' component={SandboxPage} />
+          <Route path='/contact' component={ContactPage} />
+          <Route path='/server-error' component={ServerError} />
+          <Route component={NotFound} />
+        </Switch>
       </Container>
     </ThemeProvider>
   );
