@@ -13,6 +13,7 @@ import ProductDetails from '../../features/catalog/ProductDetails';
 import ContactPage from '../../features/contact/Contact';
 import HomePage from '../../features/home/HomePage';
 import SandboxPage from '../../features/sandbox/SandboxPage';
+import ServerError from '../errors/ServerError';
 import Header from './Header';
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path='/catalog/:id' component={ProductDetails} exact />
         <Route path='/sandbox' component={SandboxPage} exact />
         <Route path='/contact' component={ContactPage} exact />
+        <Route path='/server-error' component={ServerError} exact />
       </Container>
     </ThemeProvider>
   );
