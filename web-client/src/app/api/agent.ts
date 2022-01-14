@@ -34,7 +34,7 @@ axios.interceptors.response.use(
           toast.error(data.title);
           break;
         case 404:
-          toast.error(data.title);
+          history.push('/not-found');
           break;
         case 500:
           history.push({

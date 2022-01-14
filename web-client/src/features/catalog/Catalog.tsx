@@ -11,16 +11,18 @@ export default function Catalog() {
   useEffect(() => {
     setLoading(true);
 
-    agent.Catalog.list()
-      .then((products) => {
-        setProducts(products);
-      })
-      .catch((error) => {
+    const fetchProducts = async () => {
+      try {
+        const response = await agent.Catalog.list();
+        setProducts(response);
+      } catch (error) {
         console.error(error);
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   if (loading) {

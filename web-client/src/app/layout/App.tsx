@@ -43,10 +43,11 @@ function App() {
         <Switch>
           <Route path='/' component={HomePage} exact />
           <Route path='/catalog' component={Catalog} exact />
-          <Route path='/catalog/:id' component={ProductDetails} />
-          <Route path='/sandbox' component={SandboxPage} />
-          <Route path='/contact' component={ContactPage} />
-          <Route path='/server-error' component={ServerError} />
+          <Route path='/catalog/:id' component={ProductDetails} exact />
+          <Route path='/sandbox' component={SandboxPage} exact />
+          <Route path='/contact' component={ContactPage} exact />
+          <Route path='/server-error' component={ServerError} exact />
+          <Route path='/not-found' component={NotFound} exact />
           <Route component={NotFound} />
         </Switch>
       </Container>
