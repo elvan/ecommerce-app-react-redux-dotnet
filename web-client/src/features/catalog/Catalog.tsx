@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import agent from '../../app/api/agent';
+import Loading from '../../app/layout/Loading';
 import Product from '../../app/models/product';
 import ProductList from './ProductList';
 
@@ -23,7 +24,7 @@ export default function Catalog() {
   }, []);
 
   if (loading) {
-    return <h3>Loading...</h3>;
+    return <Loading />;
   }
 
   return (
